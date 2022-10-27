@@ -6,6 +6,7 @@ def is_there(word, yourword, letter):
             c = word[i]
             if c == letter:
                 yourword[i] = c
+                word[i] = '_';
                 return 0;
         return -1;
 # display game name
@@ -75,7 +76,8 @@ HANGMANPICS = ['''
 words = ('ant baboon badger bat bear beaver camel cat clam cobra').split()
 
 # 64 words, get a single word
-word = words[random.randint(0, len(words) - 1)]
+# word = words[random.randint(0, len(words) - 1)]
+word = list("baboon")
 
 print(word)
 # generate spaces 
@@ -86,10 +88,7 @@ count = 0;
 word_count = 0;
 while count != 7:
     c = input("Guess the word: ")
-    if word_count + 1 == len(word):
-        print(guessed_word_str)
-        print("you won")
-        break;
+    
     if is_there(word, guessed_word, c) == 0:
         word_count+=1;
         guessed_word_str = ''.join(guessed_word)
@@ -97,6 +96,11 @@ while count != 7:
     else:
         print(HANGMANPICS[count])
         count+=1
+
+    if word_count == len(word):
+        print(guessed_word_str)
+        print("you won")
+        break;
 
 if count == 7:
     print("you lose")
