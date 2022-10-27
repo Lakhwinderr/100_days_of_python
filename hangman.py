@@ -76,8 +76,8 @@ HANGMANPICS = ['''
 words = ('ant baboon badger bat bear beaver camel cat clam cobra').split()
 
 # 64 words, get a single word
-# word = words[random.randint(0, len(words) - 1)]
-word = list("baboon")
+# word = 
+word = list(words[random.randint(0, len(words) - 1)])
 
 print(word)
 # generate spaces 
